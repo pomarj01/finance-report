@@ -2,38 +2,49 @@ import React from 'react';
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
-  VStack,
-  Code,
+  Container,
   Grid,
-  theme,
+  GridItem,
+  Heading
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import Portfolio from './PortfolioValue';
+
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
+    <ChakraProvider>
+      <Box
+        display="flex"
+        minHeight="100vh"
+        height="100%"
+        flexDirection="column"
+      >
+        <Container maxW="container.lg" mt={4}>
+          <Grid
+            gridTemplateRows={'50px 1fr'}
+            // gap={10}
+            padding={6}
+            shadow="md"
+            borderWidth="1px"
+            borderRadius="xl"
+          >
+            <GridItem colSpan={2}>
+              <Heading
+                as="h1"
+                justifyContent="center"
+                size="lg"
+                mb={4}
+                mt={[1, 2]}
+              >
+                Finance Report
+              </Heading>
+            </GridItem>
+
+            <GridItem colSpan={2}>
+              <Portfolio />
+            </GridItem>
+          </Grid>
+        </Container>
       </Box>
     </ChakraProvider>
   );
